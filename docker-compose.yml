@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  tedam-mysql:
+    image: tedam-mysql:5.7
+    volumes:
+      - type: bind
+        source: ./tedamdata
+        target: /var/lib/mysql
+    ports:
+      - 3306:3306
+  tedam-services:
+    image: tedam:latest
+    depends_on:
+      - tedam-mysql
+    ports:
+      - 8888:8080
+      - 9081:9081
