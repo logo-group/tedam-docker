@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   tedam-mysql:
-    image: tedam-mysql:5.7
+    image: logobs/tedam-mysql:5.7
     volumes:
       - type: bind
         source: ./tedamdata
@@ -10,7 +10,7 @@ services:
     ports:
       - 3306:3306
   tedam-services:
-    image: tedam:latest
+    image: logobs/tedam-face:3.10
     depends_on:
       - tedam-mysql
     ports:
